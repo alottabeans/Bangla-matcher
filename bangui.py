@@ -13,14 +13,12 @@ Config.set('graphics', 'resizable', False)
 
 from banglogic import *
 
-#TODO: add score label
 
 class BanglaGame:
 
     def bangla_game(self):      
         root = StackLayout(orientation='lr-bt')
         
-        #generated question    
         self.question = Label(text=gen_question, 
                 font_name='fonts/Hind_Siliguri/HindSiliguri-Medium.ttf', font_size='50sp') 
 
