@@ -8,25 +8,37 @@ bw = data['bangla_words'] #bangla words
 tw = data['translations'] #translated words
 
 #convert lists to dict
-banglalist = dict(zip(bw, tw))
+bangladict = dict(zip(bw, tw))
 
-gen_question = random.choice(list(banglalist.keys()))
+gen_question = random.choice(list(bangladict.keys()))
 
-#random answers
-wrong_btn1 = random.choice(list(banglalist.values()))
-wrong_btn2 = random.choice(list(banglalist.values()))
-wrong_btn3 = random.choice(list(banglalist.values()))
-correct_btn = banglalist[gen_question]
+#initialize buttons
+_btn1 = random.choice(list(bangladict.values())) 
+_btn2 = random.choice(list(bangladict.values())) 
+_btn3 = random.choice(list(bangladict.values())) 
+correct_btn = bangladict[gen_question]
 
-mult_choice = [wrong_btn1, wrong_btn2, wrong_btn3, correct_btn]
+mult_choice = [_btn1, _btn2, _btn3, correct_btn]
 
-#shuffle buttons 
-shuffle_choices = random.shuffle(mult_choice)
-
-def check_if_correct(ins, ques): 
-     
+def check_if_correct(ins, _gui_lbl, _gui_btns):     
     if ins.text == correct_btn:
-        ques.color=[0, 0.99, 0, 1]
+        _gui_lbl.color = [0, 0.99, 0, 1]            
+        update_label(_gui_lbl) 
+        update_buttons(_gui_btns)
 
     elif ins.text != correct_btn:
-        ques.color=[0.99, 0, 0, 1]
+        _gui_lbl.color = [0.99, 0, 0, 1] 
+
+def update_label(_lbl):   
+    global gen_question    
+    gen_question = random.choice(list(bangladict.keys()))
+    _lbl.text = gen_question
+
+
+def update_buttons(_btns):
+    for wrong_btns in _btns[:-1]:
+        wrong_btns.text = random.choice(list(bangladict.values()))
+
+
+if __name__ == '__main__':
+    update_buttons(mult_choice)
