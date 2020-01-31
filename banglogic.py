@@ -4,41 +4,43 @@ import json
 with open('bangladata.json') as f:
     data = json.load(f)
 
-bw = data['bangla_words'] #bangla words
-tw = data['translations'] #translated words
+bw = data['bangla_words'] 
+tw = data['translations']
 
-#convert lists to dict
 bangladict = dict(zip(bw, tw))
 
-gen_question = random.choice(list(bangladict.keys()))
 
-#initialize buttons
-_btn1 = random.choice(list(bangladict.values())) 
-_btn2 = random.choice(list(bangladict.values())) 
-_btn3 = random.choice(list(bangladict.values())) 
-correct_btn = bangladict[gen_question]
+class BangLogic:
+    
+    def __init__(self):
+        self.gen_question = random.choice(list(bangladict.keys()))
 
-mult_choice = [_btn1, _btn2, _btn3, correct_btn]
+        self._btn1 = random.choice(list(bangladict.values())) 
+        self._btn2 = random.choice(list(bangladict.values())) 
+        self._btn3 = random.choice(list(bangladict.values())) 
+        self._btn4 = random.choice(list(bangladict.values()))
 
-def check_if_correct(ins, _gui_lbl, _gui_btns):     
-    if ins.text == correct_btn:
-        _gui_lbl.color = [0, 0.99, 0, 1]            
-        update_label(_gui_lbl) 
-        update_buttons(_gui_btns)
+        self.correct_btn = bangladict[self.gen_question]
+        self.mult_choice = [self._btn1, self._btn2, self._btn3, self.correct_btn] 
 
-    elif ins.text != correct_btn:
-        _gui_lbl.color = [0.99, 0, 0, 1] 
+    
+    def check_if_correct(self, _instance, _lbl, _btn_list):     
+        if _instance.text == self.correct_btn:
+            _lbl.color = [0, 0.99, 0, 1]                    
+            self.update_buttons(_btn_list)
+            self.update_label(_lbl) 
 
-def update_label(_lbl):   
-    global gen_question    
-    gen_question = random.choice(list(bangladict.keys()))
-    _lbl.text = gen_question
-
-
-def update_buttons(_btns):
-    for wrong_btns in _btns[:-1]:
-        wrong_btns.text = random.choice(list(bangladict.values()))
+        elif _instance.text != self.correct_btn:
+            _lbl.color = [0.99, 0, 0, 1] 
+            self.update_buttons(_btn_list)
 
 
-if __name__ == '__main__':
-    update_buttons(mult_choice)
+    def update_label(self, gui_lbl):
+        self.gen_question = random.choice(list(bangladict.keys()))
+        self.gui_lbl.text = self.gen_question
+
+
+    def update_buttons(self, _gui_btns): 
+        for btn in _gui_btns[:-1]:
+            btn.text = random.choice(list(bangladict.values()))   
+        _gui_btns[3] = self.correct_btn 
