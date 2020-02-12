@@ -11,10 +11,8 @@ tw = data['translations']
 bangladict = dict(zip(tw, bw))
 
 
-class BangLogic:
-    
-    gen_question = random.choice(list(bangladict.values()))
-         
+class BangLogic:    
+    gen_question = random.choice(list(bangladict.values())) 
 
     correct_btn = get_key(bangladict, gen_question)
     
@@ -28,8 +26,8 @@ class BangLogic:
     def check_if_correct(self, _instance, _lbl, _btn_list):        
         if _instance.text == self.correct_btn:
             _lbl.color = [0, 0.99, 0, 1] 
-            self.change_label(_lbl) 
-            self.change_buttons(_btn_list)
+            self.update_label(_lbl) 
+            self.update_buttons(_btn_list)
 
         elif _instance.text != self.correct_btn:
             _lbl.color = [0.99, 0, 0, 1] 
