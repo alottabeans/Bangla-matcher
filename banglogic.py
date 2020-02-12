@@ -35,13 +35,13 @@ class BangLogic:
             _lbl.color = [0.99, 0, 0, 1] 
 
 
-    def change_label(self, _gui_lbl): 
+    def update_label(self, _gui_lbl): 
         self._gui_lbl = _gui_lbl 
         self.gen_question = random.choice(list(bangladict.values())) 
         self._gui_lbl.text = self.gen_question 
 
 
-    def change_buttons(self, _gui_btns):
+    def update_buttons(self, _gui_btns):
         self.correct_btn = get_key(bangladict, self.gen_question) 
         for button in _gui_btns:
             button.text = random.choice(list(bangladict.keys()))
