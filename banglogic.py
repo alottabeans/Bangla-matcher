@@ -14,12 +14,12 @@ bangladict = dict(zip(tw, bw))
 class BangLogic:    
     gen_question = random.choice(list(bangladict.values())) 
 
-    correct_btn = get_key(bangladict, gen_question)
+    correct_ans = get_key(bangladict, gen_question)
     
     _btn1 = random.choice(list(bangladict.keys())) 
     _btn2 = random.choice(list(bangladict.keys())) 
     _btn3 = random.choice(list(bangladict.keys()))  
-    _btn4 = correct_btn 
+    _btn4 = correct_ans
     
     mult_choice = [_btn1, _btn2, _btn3, _btn4]  
     
@@ -27,12 +27,12 @@ class BangLogic:
 
 
     def check_if_correct(self, _instance, _lbl, _btn_list):         
-        if _instance.text == self.correct_btn:
+        if _instance.text == self.correct_ans:
             _lbl.color = [0, 0.99, 0, 1] 
             self.update_label(_lbl) 
             self.update_buttons(_btn_list)
 
-        elif _instance.text != self.correct_btn:
+        elif _instance.text != self.correct_ans:
             _lbl.color = [0.99, 0, 0, 1] 
 
 
@@ -43,9 +43,9 @@ class BangLogic:
 
 
     def update_buttons(self, _gui_btns):
-        self.correct_btn = get_key(bangladict, self.gen_question) 
+        self.correct_ans= get_key(bangladict, self.gen_question) 
         for button in _gui_btns:
             button.text = random.choice(list(bangladict.keys()))
             if button == _gui_btns[3]:
-                button.text = self.correct_btn
+                button.text = self.correct_ans
         random.shuffle(_gui_btns)
