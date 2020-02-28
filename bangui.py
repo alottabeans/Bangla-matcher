@@ -11,43 +11,36 @@ from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.stacklayout import StackLayout
-from kivy.properties import StringProperty
 
 from banglogic import BangLogic
 
 
-class BanglaGame:
-    
+#TODO: add # of attempts label
+class BanglaGame: 
     bl = BangLogic() 
     
-    def bangla_game(self):     
-        
+    def bangla_game(self):      
         root = StackLayout(orientation='lr-bt')
         
         self.ques_lbl = Label(text=self.bl.gen_question, 
-                font_name='fonts/Hind_Siliguri/HindSiliguri-Medium.ttf', font_size='50sp') 
-        
+                font_name='fonts/Hind_Siliguri/HindSiliguri-Regular.ttf', font_size='50sp') 
+         
         self.btn1 = Button(text=self.bl.mult_choice[0], size_hint=(1, .1)) 
-        self.btn1.bind(on_press=self.callback)
-
         self.btn2 = Button(text=self.bl.mult_choice[1], size_hint=(1, .1)) 
-        self.btn2.bind(on_press=self.callback)
-
         self.btn3 = Button(text=self.bl.mult_choice[2], size_hint=(1, .1))
-        self.btn3.bind(on_press=self.callback)
-
         self.btn4 = Button(text=self.bl.mult_choice[3], size_hint=(1, .1))  
+        
+        self.btn1.bind(on_press=self.callback)
+        self.btn2.bind(on_press=self.callback) 
+        self.btn3.bind(on_press=self.callback) 
         self.btn4.bind(on_press=self.callback)
-        
-        self.btn_list = [self.btn1, self.btn2, self.btn3, self.btn4]
-        
+     
         root.add_widget(self.btn1)
         root.add_widget(self.btn2) 
         root.add_widget(self.btn3)
         root.add_widget(self.btn4)
         
         root.add_widget(self.ques_lbl) 
-        
 
         self.btn_list = [self.btn1, self.btn2, self.btn3, self.btn4]
         
@@ -66,4 +59,3 @@ class Banglapp(App):
 
 if __name__ == '__main__':
     Banglapp().run()
-
