@@ -15,7 +15,6 @@ from kivy.uix.stacklayout import StackLayout
 from banglogic import BangLogic
 
 
-#TODO: add # of attempts label
 class BanglaGame: 
     bl = BangLogic() 
     
