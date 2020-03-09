@@ -10,7 +10,6 @@ tw = data['translations']
 
 bangladict = dict(zip(tw, bw))
 
-#TODO: refactor this shit
 class BangLogic:    
     gen_question = random.choice(list(bangladict.values())) 
 
