@@ -4,9 +4,8 @@ kivy.require('1.11.1')
 
 from kivy.config import Config
 
-#Config.set('graphics', 'resizable', False)
+Config.set('graphics', 'resizable', False)
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
-
 
 from kivy.app import App
 from kivy.uix.label import Label
@@ -38,9 +37,9 @@ class BanglaGame:
         self.btn3.bind(on_press=self.callback) 
         self.btn4.bind(on_press=self.callback)
         
-        self.redx1 = Image(source="images/greyx.png", size_hint=(None, 0.10))  
-        self.redx2 = Image(source="images/greyx.png", size_hint=(None, 0.10))
-        self.redx3 = Image(source="images/greyx.png", size_hint=(None, 0.10))
+        self.redx1 = Image(source="images/greyx.png", size_hint=(None, 0.05))  
+        self.redx2 = Image(source="images/greyx.png", size_hint=(None, 0.05))
+        self.redx3 = Image(source="images/greyx.png", size_hint=(None, 0.05))
 
         root.add_widget(self.btn1)
         root.add_widget(self.btn2) 

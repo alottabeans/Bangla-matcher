@@ -24,14 +24,13 @@ class BangLogic:
     
     random.shuffle(mult_choice)
 
-
     def check_if_correct(self, instance, lbl, btn_list):         
         if instance.text == self.correct_ans:
             lbl.color = [0, 0.99, 0, 1] 
             self.update_label(lbl) 
             self.update_buttons(btn_list)
 
-        elif _instance.text != self.correct_ans:
+        elif instance.text != self.correct_ans:
             lbl.color = [0.99, 0, 0, 1]
 
     def update_label(self, gui_lbl): 
