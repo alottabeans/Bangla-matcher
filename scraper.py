@@ -2,7 +2,6 @@ from lxml import etree, html
 import requests
 import json
 
-#TODO: get scraper to work
 class Scrape:  
   def __init__(self, URL):
     self.URL = URL
